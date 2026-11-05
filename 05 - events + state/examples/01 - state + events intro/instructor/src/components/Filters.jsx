@@ -27,6 +27,8 @@ export default function Filters() {
             />
           </div>
 
+          <p>The searchbox text value is: {searchText}</p>
+
           <hr className="border-gray-200" />
 
           <div className="space-y-2">
