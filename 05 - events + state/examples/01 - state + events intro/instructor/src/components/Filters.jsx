@@ -33,6 +33,13 @@ export default function Filters() {
   }
 
 
+  function handleSubmit(e) {
+    e.preventDefault(); // always have to do this to prevent <form> elements doing a reload-POST 
+    // here, we'd somehow pass the inputted filters onto the results component and try to get it to re-render accordingly
+    console.log('filters submitted');
+  }
+
+
   return (
     <Card title="Filters">
       <div className="space-y-4 p-4">
@@ -109,6 +116,7 @@ export default function Filters() {
             <button
               type="submit"
               className="rounded bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-700"
+              onClick={handleSubmit}
             >
               Filter
             </button>
