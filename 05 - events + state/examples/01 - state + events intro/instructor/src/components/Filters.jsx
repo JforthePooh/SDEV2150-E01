@@ -12,6 +12,26 @@ export default function Filters() {
   const [openNow, setOpenNow] = useState(false); // checkbox booleans
   const [virtual, setVirtual] = useState(false);
 
+  /*
+  Instead of having individual state per field, why not just use an object where
+  every field is a property?
+
+  I could replace alllllll my state above with this:
+
+    const [filters, setFilters] = useState({
+      searchText: '',
+      selectedCategories: [],
+      openNow: false,
+      virtual: false,
+    })
+
+  What is the concrete change? Nothing in this case; when a value in one state-bound changes,
+  the entire component (and therefore all other fields) re-render anyway.
+
+  In more complex situations (TBA), this wouldn't be a great approach, but it's a great way to do it here
+  and cleans up your code. 
+  */
+
   // state is not just "store this data to render it to the UI";
   // we also use it to drive behaviour in the UI. in this case, we'll store
   // which categories the user has clicked in the multi-select so we can later send them to Results component to filter
