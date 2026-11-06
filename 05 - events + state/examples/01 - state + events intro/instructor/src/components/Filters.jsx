@@ -8,6 +8,28 @@ export default function Filters() {
 
   // with state: re-render every time onChange changes searchText
   const [searchText, setSearchText] = useState('')   // [variable, variableSetter] = useState(defaultValue)
+  const [selectedCategories, setSelectedCategories] = useState([])
+
+  // state is not just "store this data to render it to the UI";
+  // we also use it to drive behaviour in the UI. in this case, we'll store
+  // which categories the user has clicked in the multi-select so we can later send them to Results component to filter
+  function toggleCategory(label) {
+    // IMPORTANT: you have to *fully construct* the new value; you can't mutate a stateful var
+    // so, if adding/removing one element to the list, you have to reconstruct *the whole (new) list* and then give that to the setter
+    setSelectedCategories(
+      (currentCategories) => {
+        if (currentCategories.includes(label)) {
+          return currentCategories.filter((c) => c !== label);  // .filter() gives us a new array where all elements pass the condition we give it
+        }
+
+        // recall: spread operator:  
+        //   a = [1, 2, 3, 4, 5]  
+        //   b = [...a, 6]        -> [1, 2, 3, 4, 5, ,6]
+        return [...currentCategories, label]
+      }
+    )
+  }
+
 
   return (
     <Card title="Filters">
@@ -27,7 +49,7 @@ export default function Filters() {
             />
           </div>
 
-          <p>The searchbox text value is: {searchText}</p>
+          <p>The searchbox text value is:</p>
 
           <hr className="border-gray-200" />
 
@@ -38,7 +60,8 @@ export default function Filters() {
                 <button
                   key={label}
                   type="button"
-                  className="rounded border border-sky-600 px-3 py-1 text-xs font-semibold text-sky-700 hover:bg-sky-50"
+                  className={`${selectedCategories.includes(label) && 'bg-sky-600 text-white'} rounded border border-sky-600 px-3 py-1 text-xs font-semibold text-sky-700`}
+                  onClick={() => toggleCategory(label)}
                 >
                   {label}
                 </button>
