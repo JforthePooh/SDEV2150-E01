@@ -9,6 +9,8 @@ export default function Filters() {
   // with state: re-render every time onChange changes searchText
   const [searchText, setSearchText] = useState('')   // [variable, variableSetter] = useState(defaultValue)
   const [selectedCategories, setSelectedCategories] = useState([])
+  const [openNow, setOpenNow] = useState(false); // checkbox booleans
+  const [virtual, setVirtual] = useState(false);
 
   // state is not just "store this data to render it to the UI";
   // we also use it to drive behaviour in the UI. in this case, we'll store
@@ -77,6 +79,8 @@ export default function Filters() {
                 type="checkbox"
                 id="openNow"
                 className="h-4 w-4 rounded border-gray-300 text-sky-600 focus:ring-sky-500"
+                checked={openNow}
+                onChange={(e) => setOpenNow(e.target.checked)}
               />
               Open now
             </label>
@@ -86,6 +90,8 @@ export default function Filters() {
                 type="checkbox"
                 id="virtual"
                 className="h-4 w-4 rounded border-gray-300 text-sky-600 focus:ring-sky-500"
+                checked={virtual}
+                onChange={(e) => setVirtual(e.target.checked)}
               />
               Virtual options
             </label>
