@@ -46,10 +46,13 @@ function App() {
         />
       </aside>
       <section className="md:col-span-2 lg:col-span-1">
-        <Results />
+        <Results
+          selectedResource={selectedResource}
+          onSelectResource={setSelectedResource}
+        />
       </section>
       <aside className="md:col-span-1 lg:col-span-1">
-        <Details />
+        <Details selectedResource={selectedResource} />
       </aside>
     </PageLayout>
     // <PageLayout
