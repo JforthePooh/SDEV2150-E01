@@ -49,6 +49,9 @@ function App() {
         <Results
           selectedResource={selectedResource}
           onSelectResource={setSelectedResource}
+          searchTerm={searchTerm}
+          selectedCategories={selectedCategories}
+          openNowOnly={openNowOnly}
         />
       </section>
       <aside className="md:col-span-1 lg:col-span-1">
