@@ -52,7 +52,13 @@ function App() {
         />
       </section>
       <aside className="md:col-span-1 lg:col-span-1">
-        <Details selectedResource={selectedResource} />
+        {selectedResource ? (
+          <Details selectedResource={selectedResource} />
+        ) : ( 
+          <div className="text-sm text-base-content/70">
+            Please select a resource to view details.
+          </div>
+        )}
       </aside>
     </PageLayout>
     // <PageLayout

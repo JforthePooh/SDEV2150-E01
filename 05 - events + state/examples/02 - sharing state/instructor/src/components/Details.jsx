@@ -5,7 +5,6 @@ export default function Details({ selectedResource }) {
   
   // I had to write no new behaviour in Results/Details, just change where
   // the state lived and boom, click a row -> Details updates.
-
   return (
     <Card title="Resource Details">
       <div className="space-y-3 p-4">
